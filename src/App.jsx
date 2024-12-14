@@ -17,7 +17,7 @@ function App() {
   };
 
   const agregarPost = async () => {
-    const post = { titulo, img: imgSrc, descripcion, likes:0 };
+    const post = { titulo, img: imgSrc, descripcion, likes };
     console.log('Datos enviados:', post); // Verifica que los datos sean correctos
     await axios.post(urlBaseServer + "/posts", post);
     getPosts();
