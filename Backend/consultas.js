@@ -43,7 +43,7 @@ const editarPost = async (id) => {
       "UPDATE posts SET likes = likes + 1 WHERE id = $1 RETURNING *",
       [id]
     );
-    return result.rows[0]; //Devolver actualización
+   return result.rows[0];  //Devolver actualización
   } catch (error) {
     throw new Error("Error al editar el post" + error.message);
   }
