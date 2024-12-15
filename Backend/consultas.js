@@ -37,11 +37,11 @@ const crearPost = async (titulo, img, descripcion, likes) => {
 };
 
 //Func. Editar post.
-const editarPost = async (id, likes) => {
+const editarPost = async (id) => {
   try {
     const result = await pool.query(
-      "UPDATE posts SET likes = $1 Where id = $2 RETURNING *",
-      [likes, id]
+      "UPDATE posts SET likes = likes + 1 WHERE id = $1 RETURNING *",
+      [id]
     );
     return result.rows[0]; //Devolver actualización
   } catch (error) {

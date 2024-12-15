@@ -44,18 +44,11 @@ app.post('/posts', async (req, res)=>{
 });
 
 //Ruta editar post
-app.put('/posts/:id', async (req, res) => {
+app.put('/posts/like/:id', async (req, res) => {
     const {id} = req.params;
-    const {likes} = req.body;
 
-    //Validar datos
-    if(typeof likes !== 'number'){
-        return res.status(400).json({error: 'El campo "likes tiene que ser un número.'});
-    }
-
-    //Manejo de errores.
     try{
-        const postActualizado = await editarPost(id, likes); //Llamando func. editar post.
+        const postActualizado = await editarPost(id); //Aumentar likes.
         if(!postActualizado){
             return res.status(404).json({error: 'Post no encontrado.'});
         } 
